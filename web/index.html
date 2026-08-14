@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Local 3-D heat-transfer roast simulation"><title>Roast Solver</title><link rel="stylesheet" href="./style.css"></head>
+<body>
+<header><div><span class="eyebrow">3-D HEAT TRANSFER · LOCAL ONLY</span><h1>Roast <em>Solver</em></h1></div><p class="lede">Explore an engineering estimate of internal temperature, carryover, and doneness. Not a food-safety guarantee.</p></header>
+<main>
+  <aside class="panel controls">
+    <h2>Cook setup</h2>
+    <form id="controls">
+      <label>Shape <select name="preset"><option value="roast">Boneless roast</option><option value="bird">Whole bird</option><option value="slab">Slab / brisket</option><option value="ham">Ham</option></select></label>
+      <div class="pair"><label>Weight <span><input name="mass" type="number" value="1.5" min="0.2" max="12" step="0.1"> kg</span></label><label>Start <span><input name="initial" type="number" value="5" min="-2" max="30"> °C</span></label></div>
+      <div class="pair"><label>Oven <span><input name="oven" type="number" value="180" min="60" max="260"> °C</span></label><label>Target core <span><input name="target" type="number" value="57" min="40" max="95"> °C</span></label></div>
+      <label>Rest <span><input name="rest" type="number" value="30" min="0" max="120"> min</span></label>
+      <div class="toggles"><label><input name="fan" type="checkbox"> Fan convection</label><label><input name="covered" type="checkbox"> Covered / humid</label></div>
+      <input name="resolution" type="hidden" value="40">
+      <button type="submit" id="run">Run simulation <span>→</span></button>
+    </form>
+    <div class="status"><div class="status-row"><span id="status">Ready</span><span id="engine">worker idle</span></div><div class="track"><i id="progress"></i></div></div>
+    <details><summary>Model assumptions</summary><p>Homogeneous lean meat, parametric shape, insulated pan patch, estimated oven transfer. Surface moisture is finite and tracked per surface cell. No probe logs were used for calibration.</p></details>
+  </aside>
+
+  <section class="workspace">
+    <div class="metrics">
+      <article><small>PULL AT</small><strong id="pull">—</strong><span>elapsed</span></article>
+      <article><small>PEAK CORE</small><strong id="peak">—</strong><span id="carry">carryover —</span></article>
+      <article><small>PEAK AFTER PULL</small><strong id="peak-time">—</strong><span>during rest</span></article>
+      <article><small>PASTEURIZATION</small><strong id="pasteurization">—</strong><span>equivalent min @ 70 °C</span></article>
+    </div>
+    <div class="grid">
+      <article class="panel chart-card"><div class="card-head"><div><span class="eyebrow">COLDEST POINT</span><h2>Temperature journey</h2></div><div class="legend"><span><i></i> coldest</span><span><i class="probe"></i> deep probe</span></div></div><canvas id="chart" width="760" height="340" aria-label="Core temperature over time"></canvas></article>
+      <article class="panel slice-card"><div class="card-head"><div><span class="eyebrow">FINAL FIELD</span><h2>Doneness slice</h2></div><output id="slice-label">center</output></div><canvas id="slice" width="420" height="420" aria-label="Final temperature cross-section"></canvas><label class="slider">Slice depth <input id="slice-depth" type="range" min="0" max="1" value="0.5" step="0.01"></label><div class="colour-key"><span>cool</span><i></i><span>hot</span></div></article>
+    </div>
+    <div class="safety"><strong>Interpret carefully.</strong> Pasteurization is the conservative minimum-cell integral using z = 7 °C and 70 °C reference. Geometry and boundary conditions are estimates; verify doneness and safety with a calibrated thermometer.</div>
+  </section>
+</main>
+<footer>Roast Solver M6 · calculations remain in your browser · <a href="https://github.com/" rel="noreferrer">source-ready static build</a></footer>
+<script type="module" src="./app.js"></script>
+</body></html>

@@ -1,0 +1,136 @@
+{
+  "kind": "SYNTHETIC_FORWARD_MODEL_NOT_PROBE_DATA",
+  "generator": "roast_solver 0.1.0",
+  "purpose": "exercise fixture plumbing only; parameters are not fitted",
+  "scenarios": [
+    {
+      "config": {
+        "preset": "roast",
+        "mass_kg": 0.4,
+        "resolution": 22,
+        "initial_c": 8,
+        "oven_c": 170,
+        "target_c": 95,
+        "convection": false,
+        "covered": false,
+        "emissivity": 0.88,
+        "h_still": 9.5,
+        "h_fan": 20.0,
+        "moisture_kg_m2": 0.18,
+        "ambient_c": 22.0,
+        "rest_minutes": 0,
+        "foil_tent": false,
+        "max_roast_hours": 1.0,
+        "sample_seconds": 300,
+        "timestep_seconds": null,
+        "denaturation_bump": false,
+        "pasteurization_ref_c": 70.0,
+        "pasteurization_z_c": 7.0
+      },
+      "observations": {
+        "time_s": [
+          0.0,
+          68.328,
+          388.746,
+          696.4,
+          1051.822,
+          1398.007,
+          1738.364,
+          2074.641,
+          2407.944,
+          2739.002,
+          3068.323,
+          3396.273,
+          3600.0
+        ],
+        "coldest_c": [
+          8.0,
+          8.0,
+          8.02539,
+          8.95166,
+          12.52821,
+          17.38101,
+          23.5375,
+          30.68203,
+          38.46001,
+          46.59454,
+          54.863,
+          63.08783,
+          68.12667
+        ],
+        "deep_probe_c": [
+          8.0,
+          8.0,
+          8.02617,
+          8.95166,
+          12.78271,
+          19.20163,
+          27.81184,
+          37.70508,
+          48.01686,
+          58.18619,
+          67.90294,
+          77.01746,
+          82.36172
+        ]
+      }
+    },
+    {
+      "config": {
+        "preset": "slab",
+        "mass_kg": 0.4,
+        "resolution": 22,
+        "initial_c": 8,
+        "oven_c": 150,
+        "target_c": 95,
+        "convection": true,
+        "covered": true,
+        "emissivity": 0.91,
+        "h_still": 10.0,
+        "h_fan": 18,
+        "moisture_kg_m2": 0.3,
+        "ambient_c": 22.0,
+        "rest_minutes": 0,
+        "foil_tent": false,
+        "max_roast_hours": 1.0,
+        "sample_seconds": 300,
+        "timestep_seconds": null,
+        "denaturation_bump": false,
+        "pasteurization_ref_c": 70.0,
+        "pasteurization_z_c": 7.0
+      },
+      "observations": {
+        "time_s": [
+          0.0,
+          112.273,
+          422.372,
+          809.477,
+          1183.714,
+          1551.393,
+          1915.254,
+          2096.227
+        ],
+        "coldest_c": [
+          8.0,
+          8.0,
+          20.18744,
+          40.75078,
+          59.33207,
+          75.40945,
+          89.155,
+          95.20769
+        ],
+        "deep_probe_c": [
+          8.0,
+          8.0,
+          29.6125,
+          59.73905,
+          82.54346,
+          99.17892,
+          111.36504,
+          116.19912
+        ]
+      }
+    }
+  ]
+}

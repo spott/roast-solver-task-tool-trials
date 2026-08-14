@@ -1,0 +1,12 @@
+{
+  "name": "roast-solver-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-web.mjs",
+    "build:wasm": "bash scripts/build-wasm.sh",
+    "preview": "node scripts/preview.mjs",
+    "test": "node --check web/src/app.js && node --check web/src/worker.js"
+  }
+}
