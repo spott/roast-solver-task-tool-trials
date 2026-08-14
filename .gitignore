@@ -15,3 +15,5 @@ result
 result-*
 coverage/
 *.log
+*.egg-info/
+.direnv/

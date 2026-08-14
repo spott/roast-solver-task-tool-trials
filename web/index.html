@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#171b19"><title>Roast Solver — 3D heat model</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#">ROAST <span>SOLVER</span></a><div class="model-badge"><i></i> 3D embedded-boundary model</div></header>
+<main>
+  <section class="hero"><div><p class="eyebrow">Plan the pull, not just the timer</p><h1>Heat moves inward.<br><em>See when it gets there.</em></h1><p class="lede">A locally running 3D heat-transfer model for roasts and poultry. Radiation, evaporation, shape, rest, and carryover are solved—not hidden behind a minutes-per-pound rule.</p></div><div class="disclaimer"><strong>Synthetic baseline</strong><span>No probe-log calibration is included. Treat results as planning estimates, not food-safety instructions.</span></div></section>
+  <div class="workspace">
+    <aside class="controls panel">
+      <div class="panel-title"><span>01</span><h2>Cook setup</h2></div>
+      <form id="cook-form">
+        <label>Shape preset<select id="preset"><option value="roast">Boneless roast</option><option value="bird">Whole bird + cavity</option><option value="slab">Rounded slab</option><option value="ham">Ham / teardrop</option></select></label>
+        <div class="pair"><label>Weight <span>kg</span><input id="mass" type="number" min="0.15" max="12" step="0.05" value="1.5"></label><label>Start <span>°C</span><input id="initial" type="number" min="-2" max="35" step="1" value="5"></label></div>
+        <div class="pair"><label>Oven <span>°C</span><input id="oven" type="number" min="70" max="280" step="5" value="180"></label><label>Pull target <span>°C</span><input id="target" type="number" min="35" max="95" step="1" value="60"></label></div>
+        <fieldset><legend>Air & surface</legend><label class="toggle"><input id="convection" type="checkbox"><span></span>Fan / convection</label><label class="toggle"><input id="covered" type="checkbox"><span></span>Covered / humid</label><label class="toggle"><input id="foil" type="checkbox"><span></span>Foil tent during rest</label></fieldset>
+        <details><summary>Advanced model controls</summary><label>Grid quality<select id="resolution"><option value="18">Fast · 18³ span</option><option value="24" selected>Balanced · 24³ span</option><option value="32">Fine · 32³ span</option><option value="40">Validation · 40³ span</option></select></label><label>Maximum cook <span>hours</span><input id="maxCook" type="number" min="1" max="12" value="6"></label><label>Rest <span>minutes</span><input id="rest" type="number" min="0" max="120" value="30"></label><label class="toggle"><input id="keepOverlay" type="checkbox" checked><span></span>Keep last run as overlay</label></details>
+        <button id="run" type="submit"><span>Run 3D prediction</span><b>→</b></button>
+      </form>
+      <div class="compute-note">Runs entirely on this device in a Web Worker. No recipe or result leaves your browser.</div>
+    </aside>
+    <section class="results">
+      <div class="status panel" id="status"><div><span class="status-dot"></span><strong id="status-title">Ready to solve</strong><small id="status-detail">Balanced grid · Rust/WASM core</small></div><div class="progress"><i id="progress-bar"></i></div></div>
+      <div class="metrics">
+        <article><span>Recommended pull</span><strong id="pull-time">—</strong><small id="pull-temp">coldest point target</small></article>
+        <article><span>Peak after pull</span><strong id="peak-temp">—</strong><small id="peak-time">including carryover</small></article>
+        <article class="accent"><span>Predicted carryover</span><strong id="carryover">—</strong><small>pull-time cold spot</small></article>
+      </div>
+      <article class="chart-card panel"><div class="card-head"><div><p class="eyebrow">Temperature history</p><h2>Core progression</h2></div><div class="legend"><span class="cold">Coldest point</span><span class="probe">Center probe</span><span class="prior">Prior run</span></div></div><canvas id="curve" width="900" height="330" aria-label="Temperature over time chart"></canvas></article>
+      <div class="lower-grid">
+        <article class="slice-card panel"><div class="card-head"><div><p class="eyebrow">3D field</p><h2>Doneness slice</h2></div><output id="slice-label">center plane</output></div><div class="slice-wrap"><canvas id="slice" width="480" height="480" aria-label="Cross-section temperature field"></canvas><div class="target-key"><i></i><span>pull target contour</span></div></div><label class="slice-slider">Bottom<input id="slice-position" type="range" min="0" max="100" value="50" disabled>Top</label><div class="heat-legend"><span>cool core</span><i></i><span>hot surface</span></div></article>
+        <article class="detail-card panel"><div class="card-head"><div><p class="eyebrow">Rest & safety context</p><h2>After the pull</h2></div></div><dl><div><dt>Peak reached</dt><dd id="peak-after">—</dd></div><div><dt>Solver time step</dt><dd id="time-step">—</dd></div><div><dt>Model grid</dt><dd id="grid-size">—</dd></div></dl><details class="safety"><summary>Pasteurization model output</summary><div><strong id="pasteurization">—</strong><span>equivalent seconds at 70°C, z = 10°C</span><p>Computed conservatively at the instantaneous coldest cell. This simplified integral is not a safety guarantee; verify food with a calibrated thermometer and follow local guidance.</p></div></details><div class="physics-list"><span>✓ lagged food properties</span><span>✓ convection + radiation</span><span>✓ wet-to-crust evaporation</span><span>✓ ambient rest phase</span></div></article>
+      </div>
+    </section>
+  </div>
+</main>
+<footer><span>Roast Solver v0.1 · M1–M6</span><span>Static, local-first, no telemetry · physics notes in source repository</span></footer>
+<script type="module" src="./app.js"></script>
+</body></html>
