@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "description": "Dry half-cell Robin+radiation kernel regression shared by Python and Rust; analytic synthetic anchor.",
+  "input": {"cell_c": 20.0, "previous_surface_c": 20.0, "air_c": 120.0, "wall_c": 120.0, "h_conv": 10.0, "emissivity": 0.9, "dx_m": 0.003},
+  "expected": {"h_rad_w_m2k": 8.423455170613305, "q_in_w_m2": 1746.18473650121, "surface_c": 25.219475916412456}
+}

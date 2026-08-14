@@ -1,0 +1,9 @@
+{
+  "schema": 1,
+  "description": "Language-neutral property anchors generated from the documented Choi-Okos mixture; synthetic, not probe data.",
+  "values": [
+    {"temp_c": 0, "cp": 3632.9999999999995, "k": 0.473115, "rho": 1066.3983903420524},
+    {"temp_c": 40, "cp": 3648.6542079999995, "k": 0.5260761048, "rho": 1053.6779324055667},
+    {"temp_c": 80, "cp": 3675.8352320000004, "k": 0.5611807792, "rho": 1041.2573673870334}
+  ]
+}

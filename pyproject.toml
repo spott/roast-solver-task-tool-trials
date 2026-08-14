@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "roast-solver"
+version = "0.1.0"
+description = "Reference 3-D heat-transfer solver for Roast Solver"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+test = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+include = ["roast_solver*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
