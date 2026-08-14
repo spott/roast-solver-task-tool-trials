@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "provenance": "deterministic Python reference output; synthetic numerical regression only",
+  "empirically_calibrated": false,
+  "property_samples": [
+    {
+      "temperature_c": -5.0,
+      "density": 1059.3826403299531,
+      "heat_capacity": 3616.259529900001,
+      "conductivity": 0.4843947558092649,
+      "diffusivity": 1.264407285291555e-07
+    },
+    {
+      "temperature_c": 20.0,
+      "density": 1056.1597898076482,
+      "heat_capacity": 3624.013528399999,
+      "conductivity": 0.5216328438285643,
+      "diffusivity": 1.3628419369740626e-07
+    },
+    {
+      "temperature_c": 60.0,
+      "density": 1042.7361926254648,
+      "heat_capacity": 3645.8144956,
+      "conductivity": 0.5666829021038257,
+      "diffusivity": 1.4906342446982603e-07
+    },
+    {
+      "temperature_c": 100.0,
+      "density": 1019.1655935051604,
+      "heat_capacity": 3679.1780099999987,
+      "conductivity": 0.5939849634113318,
+      "diffusivity": 1.5840901610351122e-07
+    }
+  ],
+  "scenario": {
+    "preset": "sphere",
+    "mass_kg": 0.2,
+    "resolution": 17,
+    "material_density": 1060.0,
+    "initial_c": 5.0,
+    "target_c": 999.0,
+    "oven_c": 160.0,
+    "convection_h": 10.0,
+    "emissivity": 0.0,
+    "wall_c": null,
+    "covered": true,
+    "ambient_vapor_density": 0.01,
+    "lewis_number": 0.9,
+    "surface_water_kg_m2": 0.25,
+    "pan_insulated": false,
+    "max_cook_s": 120.0,
+    "rest_s": 0.0,
+    "sample_interval_s": 30.0,
+    "requested_dt_s": 1.0,
+    "rest_ambient_c": 22.0,
+    "rest_h": 7.0,
+    "foil_tent": false,
+    "pasteurization_ref_c": 70.0,
+    "pasteurization_z_c": 10.0,
+    "denaturation_bump": false
+  },
+  "expected": {
+    "dimensions_zyx": [
+      22,
+      22,
+      22
+    ],
+    "inside_cells": 2512,
+    "dt_s": 1.0,
+    "records": [
+      {
+        "time_s": 0.0,
+        "coldest_c": 5.0,
+        "probe_c": 5.0,
+        "surface_mean_c": 5.0,
+        "pasteurization_equivalent_min": 0.0
+      },
+      {
+        "time_s": 30.0,
+        "coldest_c": 5.0,
+        "probe_c": 5.0,
+        "surface_mean_c": 7.547027054121842,
+        "pasteurization_equivalent_min": 1.5811388300841888e-07
+      },
+      {
+        "time_s": 60.0,
+        "coldest_c": 5.0,
+        "probe_c": 5.0,
+        "surface_mean_c": 9.63571630919891,
+        "pasteurization_equivalent_min": 3.162277660168374e-07
+      },
+      {
+        "time_s": 90.0,
+        "coldest_c": 5.000012397766113,
+        "probe_c": 5.000012397766113,
+        "surface_mean_c": 11.456420436705333,
+        "pasteurization_equivalent_min": 4.7434178269924095e-07
+      },
+      {
+        "time_s": 120.0,
+        "coldest_c": 5.000117778778076,
+        "probe_c": 5.000117778778076,
+        "surface_mean_c": 13.093501066278307,
+        "pasteurization_equivalent_min": 6.324575643548564e-07
+      }
+    ],
+    "net_surface_j": 2449.3732004123617
+  },
+  "tolerances": {
+    "property_relative": 2e-12,
+    "temperature_c_absolute": 0.0002,
+    "energy_relative": 0.0002
+  }
+}

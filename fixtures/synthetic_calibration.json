@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "name": "synthetic_roast_baseline_v1",
+  "provenance": "synthetic; not measured probe data",
+  "empirically_calibrated": false,
+  "warning": "These values are deterministic engineering fixtures for regression and UI demonstrations only. They do not establish predictive accuracy for food.",
+  "generator": "reference model assumptions selected before any probe data",
+  "scenario": {
+    "preset": "roast",
+    "mass_kg": 1.0,
+    "initial_c": 5.0,
+    "oven_c": 180.0,
+    "convection_h_w_m2k": 12.0,
+    "emissivity": 0.9,
+    "surface_water_kg_m2": 0.25,
+    "covered": false
+  },
+  "synthetic_observations": [
+    {"time_s": 0, "core_c": 5.0},
+    {"time_s": 1800, "core_c": 12.0},
+    {"time_s": 3600, "core_c": 28.0},
+    {"time_s": 5400, "core_c": 46.0}
+  ],
+  "fit_policy": "A future calibration tool may fit h, emissivity, and surface water to real logs. This fixture must never be presented as such a fit."
+}
