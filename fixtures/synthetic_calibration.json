@@ -1,0 +1,33 @@
+{
+  "fixture_kind": "synthetic-model-generated",
+  "empirical_data": false,
+  "warning": "These are deterministic outputs from the stated model, not probe measurements and not evidence of real-world accuracy.",
+  "purpose": "Exercise parameter-fitting and regression plumbing until independently collected probe logs are available.",
+  "generator": "python -m scripts.generate_fixtures",
+  "scenarios": [
+    {
+      "id": "synthetic-roast-still-oven",
+      "preset": "roast",
+      "mass_kg": 1.8,
+      "spacing_m": 0.008,
+      "initial_c": 5.0,
+      "oven_c": 180.0,
+      "h_conv_w_m2k": 10.0,
+      "emissivity": 0.9,
+      "moisture_kg_m2": 0.24,
+      "covered": false
+    },
+    {
+      "id": "synthetic-slab-covered",
+      "preset": "slab",
+      "mass_kg": 1.2,
+      "spacing_m": 0.008,
+      "initial_c": 8.0,
+      "oven_c": 160.0,
+      "h_conv_w_m2k": 10.0,
+      "emissivity": 0.9,
+      "moisture_kg_m2": 0.24,
+      "covered": true
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "roast-solver-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "wasm": "../scripts/build-wasm.sh",
+    "typecheck": "tsc --noEmit",
+    "smoke:wasm": "node ../scripts/smoke-wasm.mjs",
+    "build": "npm run wasm && npm run smoke:wasm && npm run typecheck && vite build",
+    "build:web": "npm run typecheck && vite build",
+    "dev": "vite",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  }
+}
