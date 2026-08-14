@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A local, physics-based 3D roast temperature simulator.">
+  <title>Roast Solver</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#">Roast <span>Solver</span></a>
+    <div class="model-badge"><i></i> 3D CPU/WASM model</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Heat transfer, not a timer table</p>
+        <h1>See the heat move<br>before you roast.</h1>
+        <p class="lede">A locally running 3D heat-equation model with convection, radiation, surface evaporation, and carryover rest.</p>
+      </div>
+      <p class="honesty"><strong>Model status</strong><br>Validated against analytic fixtures and synthetic calibration data—not empirical probe logs. Use as an engineering estimate, not food-safety advice.</p>
+    </section>
+
+    <div class="workspace">
+      <aside class="control-panel panel">
+        <form id="simulation-form">
+          <div class="panel-heading">
+            <div><span class="step">01</span><h2>Roast setup</h2></div>
+            <span id="engine-state" class="engine-state waiting">Loading engine</span>
+          </div>
+
+          <label>Shape preset
+            <select id="preset" name="preset">
+              <option value="roast">Boneless roast</option>
+              <option value="bird">Whole bird + cavity</option>
+              <option value="ham">Ham / teardrop</option>
+              <option value="slab">Slab / brisket</option>
+            </select>
+          </label>
+
+          <div class="input-grid">
+            <label>Weight <span class="unit">kg</span>
+              <input id="mass" name="mass" type="number" min="0.25" max="12" step="0.05" value="2.0" required>
+            </label>
+            <label>Starting temp <span class="unit">°C</span>
+              <input id="initial" name="initial" type="number" min="-5" max="35" step="0.5" value="5" required>
+            </label>
+            <label>Oven temp <span class="unit">°C</span>
+              <input id="oven" name="oven" type="number" min="60" max="300" step="5" value="180" required>
+            </label>
+            <label>Pull target <span class="unit">°C</span>
+              <input id="target" name="target" type="number" min="25" max="100" step="0.5" value="58" required>
+            </label>
+          </div>
+
+          <label>Oven airflow
+            <select id="convection" name="convection">
+              <option value="10">Still oven · h = 10 W/m²K</option>
+              <option value="18">Fan assisted · h = 18 W/m²K</option>
+              <option value="25">Strong convection · h = 25 W/m²K</option>
+            </select>
+          </label>
+
+          <div class="switch-row">
+            <div><strong>Covered vessel</strong><small>Suppresses surface evaporation</small></div>
+            <label class="switch"><input id="covered" type="checkbox"><span></span><b class="sr-only">Covered</b></label>
+          </div>
+
+          <details>
+            <summary>Advanced model settings</summary>
+            <div class="details-body">
+              <div class="input-grid">
+                <label>Grid
+                  <select id="resolution">
+                    <option value="20">20³ · quick</option>
+                    <option value="26" selected>26³ · balanced</option>
+                    <option value="34">34³ · fine</option>
+                  </select>
+                </label>
+                <label>Emissivity
+                  <input id="emissivity" type="number" min="0" max="1" step="0.05" value="0.9">
+                </label>
+                <label>Max roast <span class="unit">hours</span>
+                  <input id="max-hours" type="number" min="0.25" max="24" step="0.25" value="8">
+                </label>
+                <label>Rest <span class="unit">minutes</span>
+                  <input id="rest-minutes" type="number" min="0" max="180" step="5" value="30">
+                </label>
+                <label>Room temp <span class="unit">°C</span>
+                  <input id="ambient" type="number" min="0" max="40" step="1" value="22">
+                </label>
+                <label>Rest h <span class="unit">W/m²K</span>
+                  <input id="rest-h" type="number" min="0" max="20" step="1" value="7">
+                </label>
+              </div>
+              <div class="switch-row compact">
+                <div><strong>Foil tent during rest</strong><small>Reduces convective and radiative loss</small></div>
+                <label class="switch"><input id="foil" type="checkbox"><span></span><b class="sr-only">Foil tent</b></label>
+              </div>
+              <div class="switch-row compact">
+                <div><strong>Show pasteurization estimate</strong><small>Illustrative only; not food-safety advice</small></div>
+                <label class="switch"><input id="show-pasteur" type="checkbox"><span></span><b class="sr-only">Show pasteurization estimate</b></label>
+              </div>
+            </div>
+          </details>
+
+          <div class="actions">
+            <button id="run-button" class="primary" type="submit" disabled><span>Run simulation</span><b aria-hidden="true">→</b></button>
+            <button id="cancel-button" class="secondary" type="button" hidden>Cancel</button>
+          </div>
+          <div id="progress-wrap" class="progress-wrap" hidden>
+            <div class="progress-track"><i id="progress-bar"></i></div>
+            <p id="progress-text" role="status">Preparing geometry…</p>
+          </div>
+        </form>
+      </aside>
+
+      <section class="results-column">
+        <section class="metrics" aria-label="Simulation results">
+          <article><span>Pull time</span><strong id="pull-time">—</strong><small id="pull-note">to coldest-point target</small></article>
+          <article><span>Peak core</span><strong id="peak-core">—</strong><small id="peak-note">after rest</small></article>
+          <article><span>Carryover</span><strong id="carryover">—</strong><small>coldest-point rise</small></article>
+          <article class="pasteur-card"><span>Equivalent time at 70°C</span><strong id="pasteurization">Hidden</strong><small id="pasteur-note">enable in advanced · not safety advice</small></article>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="panel-heading">
+            <div><span class="step">02</span><h2>Temperature history</h2></div>
+            <div class="chart-legend"><span class="cold">Coldest</span><span class="center">Center</span><span class="mean">Mean</span></div>
+          </div>
+          <div class="canvas-shell chart-shell">
+            <canvas id="curve-canvas" aria-label="Temperature history chart"></canvas>
+            <div id="chart-empty" class="empty-state">Run the model to stream temperature curves.</div>
+          </div>
+        </section>
+
+        <section class="panel slice-panel">
+          <div class="panel-heading slice-heading">
+            <div><span class="step">03</span><h2>Center-plane doneness</h2></div>
+            <div class="segmented" role="group" aria-label="Slice color mode">
+              <button class="active" type="button" data-color-mode="doneness">Doneness</button>
+              <button type="button" data-color-mode="thermal">Thermal</button>
+            </div>
+          </div>
+          <div class="slice-layout">
+            <div class="slice-stage">
+              <canvas id="slice-canvas" width="520" height="420" aria-label="Center temperature slice"></canvas>
+              <div id="slice-empty" class="empty-state">The center slice appears as the worker advances.</div>
+            </div>
+            <div class="slice-info">
+              <div><span>Phase</span><strong id="phase-value">Ready</strong></div>
+              <div><span>Elapsed</span><strong id="elapsed-value">—</strong></div>
+              <div><span>Coldest</span><strong id="cold-value">—</strong></div>
+              <div><span>Moisture left</span><strong id="moisture-value">—</strong></div>
+              <div id="color-key" class="color-key"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
+
+    <section class="method-note">
+      <span class="step">04</span>
+      <div><h2>What this model does—and does not know</h2><p>The CPU/WASM solver voxelizes an analytic shape scaled to weight, then advances temperature with lagged Choi–Okos properties and embedded-surface fluxes. Shape, oven airflow, and moisture are estimates. It does not model bones or fat separately and has not been fitted to real cooking logs.</p></div>
+      <a href="./docs/PHYSICS.md" title="Available in the source repository">Physics notes ↗</a>
+    </section>
+  </main>
+
+  <footer><span>Roast Solver v1 · local-first static app</span><span>No data leaves your browser</span></footer>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

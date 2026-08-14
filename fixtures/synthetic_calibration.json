@@ -1,0 +1,18 @@
+{
+  "provenance": "synthetic",
+  "empirically_calibrated": false,
+  "purpose": "Deterministic integration and UI defaults only; generated from assumed coefficients, not probe logs.",
+  "model": {
+    "h_still_W_m2K": 10.0,
+    "h_fan_W_m2K": 20.0,
+    "emissivity": 0.90,
+    "surface_moisture_kg_m2": 0.25,
+    "rest_h_W_m2K": 7.0,
+    "wet_bulb_anchor_C": 30.0
+  },
+  "scenarios": [
+    {"id": "roast-1kg-still", "preset": "roast", "mass_kg": 1.0, "oven_C": 180.0, "initial_C": 5.0, "target_C": 55.0},
+    {"id": "bird-2kg-fan", "preset": "bird", "mass_kg": 2.0, "oven_C": 190.0, "initial_C": 4.0, "target_C": 70.0},
+    {"id": "slab-08kg-covered", "preset": "slab", "mass_kg": 0.8, "oven_C": 160.0, "initial_C": 8.0, "target_C": 63.0}
+  ]
+}
