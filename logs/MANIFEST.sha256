@@ -22,3 +22,7 @@ b00669a56cacd993024d3b75847f978ac674bacb5f79155482f7b0dc558ab1ca  logs/shadow/ro
 79f2ceeee5feedebb7a43136b62617fbb710f12e42fbbf7b48301a5ac01ea41b  logs/shadow/round-2/final-response.md
 440ad1d7a099dfb84c75b16cbf40049410c526c6c15c3ecb5c228ad4b70640dc  logs/shadow/round-2/metrics.json
 f3c6d0e5c3e7ec10a1fae38ae53787c6a30067ac6060ba6803fe939244890245  logs/shadow/round-2/session.jsonl
+60eeeebcfd6ea6770ef528670b2b769ef7f13fd0ce7ad95432f8ad24710d3f08  logs/todo-only/round-1/completed.json
+3841f1078bc6b70cffaec884dbcb7704339c12ce6b8fc36e5e458128c0700ac0  logs/todo-only/round-1/final-response.md
+468c990658df3f45da85ec3b70601f90aff0a35ff72e31a1fe90652108398c06  logs/todo-only/round-1/metrics.json
+ae31872aa50a80f8561a777028e80b49dc449366991af0f025751bc51dbf1507  logs/todo-only/round-1/session.jsonl

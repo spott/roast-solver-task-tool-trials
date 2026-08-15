@@ -1,12 +1,13 @@
 # Curated run logs
 
-This directory contains the selected public records for all six experiment runs. Its structure mirrors the trial branch names:
+This directory contains the selected public records for all seven experiment runs. Its structure mirrors the trial branch names:
 
 ```text
 logs/
 ├── baseline/{round-1,round-2}/
 ├── shadow/{round-1,round-2}/
-└── full-projection/{round-1,round-2}/
+├── full-projection/{round-1,round-2}/
+└── todo-only/round-1/
 ```
 
 Each run contains:
@@ -22,6 +23,6 @@ Each run contains:
 sha256sum --check logs/MANIFEST.sha256
 ```
 
-These are exact copies of the captured artifacts; they were not normalized or redacted. Before publication, all 24 files were scanned for common private-key, GitHub-token, OpenAI-key, AWS-key, bearer-token, and credential-assignment patterns, with no matches. The transcripts do contain non-secret local paths, commands, generated source excerpts, and build output.
+These are exact copies of the captured artifacts; they were not normalized or redacted. Before publication, all 28 files were scanned for common private-key, GitHub-token, OpenAI-key, AWS-key, bearer-token, and credential-assignment patterns, with no matches. The transcripts do contain non-secret local paths, commands, generated source excerpts, and build output.
 
 Large protocol-level `events.jsonl`, patches, checkpoints, and SQLite/result-index files are intentionally excluded for now. The exact generated source is already available on the corresponding trial branches.

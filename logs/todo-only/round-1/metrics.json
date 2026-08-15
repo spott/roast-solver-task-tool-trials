@@ -1,0 +1,97 @@
+{
+  "extractor_errors": [],
+  "namespaces": {
+    "generic": {
+      "binary_change_count": 0,
+      "cache_read_tokens": 5917184,
+      "cache_write_tokens": 0,
+      "changed_file_count": 38,
+      "context_fraction_trajectory": [
+        0.37127941176470586
+      ],
+      "cost_usd": 5.970277,
+      "evaluation_count": 0,
+      "evaluations_failed": 0,
+      "evaluations_passed": 0,
+      "event_count": 45381,
+      "event_parse_errors": 0,
+      "exit_reason": "scenario_completed",
+      "final_tree_sha": "c41d52f05157f0bef925e216cbd2e7345a6c2f23",
+      "global_compaction_count": 0,
+      "global_compactions": [],
+      "input_tokens": 217581,
+      "lines_added": 2823,
+      "lines_deleted": 3,
+      "output_tokens": 64126,
+      "patch_size_bytes": 129282,
+      "process_exit_status": 0,
+      "provider_input_tokens_trajectory": [
+        217581
+      ],
+      "session_entry_count": 233,
+      "session_message_count": 229,
+      "session_parse_errors": 0,
+      "session_serialized_bytes": 688797,
+      "status": "completed",
+      "steps_completed": 3,
+      "tool_call_count": 121,
+      "tool_calls_by_name": {
+        "bash": 54,
+        "edit": 25,
+        "read": 4,
+        "todo": 3,
+        "write": 35
+      },
+      "tool_failure_count": 13,
+      "turn_count": 1,
+      "turns": [
+        {
+          "cache_read_tokens": 5917184,
+          "cache_write_tokens": 0,
+          "context_fraction": 0.37127941176470586,
+          "context_tokens": 100988,
+          "context_window": 272000,
+          "cost_usd": 5.970277000000002,
+          "elapsed_seconds": 2776.0398717019707,
+          "input_tokens": 217581,
+          "output_tokens": 64126,
+          "scenario_step": 1,
+          "turn_index": 1
+        }
+      ],
+      "usage_record_count": 107,
+      "usage_totals": {
+        "cache_read_tokens": 5917184,
+        "cache_write_tokens": 0,
+        "cost_usd": 5.970277,
+        "input_tokens": 217581,
+        "output_tokens": 64126
+      },
+      "wall_seconds": 2776.7570040528663
+    },
+    "task_compaction": {
+      "abandoned_task_count": 0,
+      "acceptance_diagnostics_available": false,
+      "accepted_region_count": null,
+      "begin_task_count": 0,
+      "closed_task_count": 0,
+      "compression_ratios": [],
+      "end_task_count": 0,
+      "expand_task_count": 0,
+      "expanded_task_ids": [],
+      "global_compactions_after_task_regions": 0,
+      "median_compression_ratio": null,
+      "open_task_count": 0,
+      "raw_region_serialized_bytes": 0,
+      "raw_task_bodies_reintroduced_after_global_compaction": null,
+      "regions": [],
+      "reintroduction_measurement": "unavailable without provider-request projection diagnostics",
+      "rejected_region_count": null,
+      "rejection_reasons": {},
+      "schema_version": 1,
+      "summary_serialized_bytes": 0,
+      "unmatched_end_count": 0
+    }
+  },
+  "schema_version": 1
+}

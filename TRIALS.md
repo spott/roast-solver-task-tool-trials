@@ -12,6 +12,7 @@ Every trial branch is a single generated commit on top of the common seed commit
 | Shadow | 2 | `shadow/round-2` | `54952dacb88281b3c6750c20d51691b9f374c6ae` | `88d09a1b2f63735be513e61606a6f7572154e6f8` |
 | Full projection | 1 | `full-projection/round-1` | `f62f9eca0d39501b0c816138dd5cfdcac1a76af2` | `b984f3b04954b686b03da46b9a61f3d684ac2fa4` |
 | Full projection | 2 | `full-projection/round-2` | `0fe298a59388c553886107e73ca2798c6afb9282` | `124277b14d6b4eb2ef0ff71d6600ad386d71e2b3` |
+| Todo only | 1 | `todo-only/round-1` | `23339678c5e6544e51ac3c9bcbd95bd681ea49f9` | `c41d52f05157f0bef925e216cbd2e7345a6c2f23` |
 
 ## Checkout
 
@@ -48,6 +49,7 @@ It did **not** work from a clean checkout on any branch:
 | `shadow/round-2` | Root has no `package.json`; the frontend package lives under `web/`. |
 | `full-projection/round-1` | Preview correctly reported that `dist/` did not exist and requested `npm run build` first. |
 | `full-projection/round-2` | `vite` was unavailable because dependencies had not been installed. |
+| `todo-only/round-1` | Root has no `package.json`; the frontend package and fixed-port preview script live under `web/`. |
 
 The two full-projection repositories worked with the short command in their previously verified local directories because independent verification had already generated ignored dependencies and production builds. Those generated artifacts are intentionally not part of the captured Git trees or these branches.
 
@@ -91,6 +93,11 @@ nix develop
 npm ci
 npm run build
 npm run preview -- --host 0.0.0.0 --port 4322
+
+# todo-only/round-1
+nix develop
+npm --prefix web run build
+npm --prefix web run preview  # fixed at 127.0.0.1:4173
 ```
 
 All six projects passed their independently rerun project-specific build, test, WASM, Nix, and HTTP checks. The command-interface difference is meaningful usability evidence, but it is separate from deeper physics and implementation quality.

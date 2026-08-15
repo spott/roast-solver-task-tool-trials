@@ -1,5 +1,7 @@
 # Projection-disabled task-tool ablation
 
+> A later single todo-only run is documented separately in [`TODO_ONLY_RESULTS.md`](TODO_ONLY_RESULTS.md); it is not included in these three-arm means.
+
 This report adds a projection-disabled shadow arm to the four-run roast-solver experiment. There are now two independent invocations per arm:
 
 1. **baseline** — no task extension;

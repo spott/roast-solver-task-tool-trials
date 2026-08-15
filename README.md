@@ -1,14 +1,16 @@
 # Roast Solver task-tool trials
 
-Six independently generated implementations of the same Roast Solver M1–M6 task, preserved as branches from one common seed.
+Seven independently generated implementations of the same Roast Solver M1–M6 task, preserved as branches from one common seed.
 
-The experiment compared three Pi conditions with two runs each:
+The main experiment compared three Pi conditions with two runs each:
 
 1. **Baseline** — no task extension.
 2. **Shadow** — task tools and workflow guidance, with context projection disabled.
 3. **Full projection** — normal `pi-task-compaction` behavior.
 
-See [`TRIALS.md`](TRIALS.md) for branch names, exact captured commits, preview behavior, and checkout instructions. See [`EXPERIMENT_RESULTS.md`](EXPERIMENT_RESULTS.md) for the three-arm analysis. Curated transcripts, metrics, completion records, and final responses are under [`logs/`](logs/README.md).
+A seventh supplemental run used the installed todo extension without task compaction.
+
+See [`TRIALS.md`](TRIALS.md) for branch names, exact captured commits, preview behavior, and checkout instructions. See [`EXPERIMENT_RESULTS.md`](EXPERIMENT_RESULTS.md) for the three-arm analysis and [`TODO_ONLY_RESULTS.md`](TODO_ONLY_RESULTS.md) for the supplemental run. Curated transcripts, metrics, completion records, and final responses are under [`logs/`](logs/README.md).
 
 The generated trial branches are intentionally unmodified. Each branch's tip tree exactly matches the corresponding experiment capture.
 
@@ -19,5 +21,6 @@ The generated trial branches are intentionally unmodified. Each branch's tip tre
 | Baseline | `baseline/round-1` | `baseline/round-2` |
 | Shadow | `shadow/round-1` | `shadow/round-2` |
 | Full projection | `full-projection/round-1` | `full-projection/round-2` |
+| Todo only | `todo-only/round-1` | — |
 
-`main` contains only the shared plan and experiment documentation; implementation code lives on the six trial branches.
+`main` contains only the shared plan, curated logs, and experiment documentation; implementation code lives on the seven trial branches.
