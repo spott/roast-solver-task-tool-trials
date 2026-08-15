@@ -8,7 +8,7 @@ The experiment compared three Pi conditions with two runs each:
 2. **Shadow** — task tools and workflow guidance, with context projection disabled.
 3. **Full projection** — normal `pi-task-compaction` behavior.
 
-See [`TRIALS.md`](TRIALS.md) for branch names, exact captured commits, preview behavior, and checkout instructions. See [`EXPERIMENT_RESULTS.md`](EXPERIMENT_RESULTS.md) for the three-arm analysis.
+See [`TRIALS.md`](TRIALS.md) for branch names, exact captured commits, preview behavior, and checkout instructions. See [`EXPERIMENT_RESULTS.md`](EXPERIMENT_RESULTS.md) for the three-arm analysis. Curated transcripts, metrics, completion records, and final responses are under [`logs/`](logs/README.md).
 
 The generated trial branches are intentionally unmodified. Each branch's tip tree exactly matches the corresponding experiment capture.
 

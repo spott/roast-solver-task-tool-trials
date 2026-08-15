@@ -1,0 +1,164 @@
+{
+  "extractor_errors": [],
+  "namespaces": {
+    "generic": {
+      "binary_change_count": 0,
+      "cache_read_tokens": 5187072,
+      "cache_write_tokens": 0,
+      "changed_file_count": 38,
+      "context_fraction_trajectory": [
+        0.4061066176470588
+      ],
+      "cost_usd": 5.862326,
+      "evaluation_count": 0,
+      "evaluations_failed": 0,
+      "evaluations_passed": 0,
+      "event_count": 50635,
+      "event_parse_errors": 0,
+      "exit_reason": "scenario_completed",
+      "final_tree_sha": "5699f258f17b7a3967dd539694a5c16411b8ace3",
+      "global_compaction_count": 0,
+      "global_compactions": [],
+      "input_tokens": 253696,
+      "lines_added": 2372,
+      "lines_deleted": 3,
+      "output_tokens": 66677,
+      "patch_size_bytes": 124165,
+      "process_exit_status": 0,
+      "provider_input_tokens_trajectory": [
+        253696
+      ],
+      "session_entry_count": 207,
+      "session_message_count": 203,
+      "session_parse_errors": 0,
+      "session_serialized_bytes": 746593,
+      "status": "completed",
+      "steps_completed": 3,
+      "tool_call_count": 106,
+      "tool_calls_by_name": {
+        "bash": 62,
+        "begin_task": 5,
+        "edit": 27,
+        "end_task": 5,
+        "read": 7
+      },
+      "tool_failure_count": 15,
+      "turn_count": 1,
+      "turns": [
+        {
+          "cache_read_tokens": 5187072,
+          "cache_write_tokens": 0,
+          "context_fraction": 0.4061066176470588,
+          "context_tokens": 110461,
+          "context_window": 272000,
+          "cost_usd": 5.862326,
+          "elapsed_seconds": 1671.474172049202,
+          "input_tokens": 253696,
+          "output_tokens": 66677,
+          "scenario_step": 1,
+          "turn_index": 1
+        }
+      ],
+      "usage_record_count": 96,
+      "usage_totals": {
+        "cache_read_tokens": 5187072,
+        "cache_write_tokens": 0,
+        "cost_usd": 5.862326,
+        "input_tokens": 253696,
+        "output_tokens": 66677
+      },
+      "wall_seconds": 1672.5215950938873
+    },
+    "task_compaction": {
+      "abandoned_task_count": 0,
+      "acceptance_diagnostics_available": false,
+      "accepted_region_count": null,
+      "begin_task_count": 5,
+      "closed_task_count": 5,
+      "compression_ratios": [
+        8.809375,
+        49.10185792349727,
+        42.09744897959184,
+        27.321521625846795,
+        36.271157894736845
+      ],
+      "end_task_count": 5,
+      "expand_task_count": 0,
+      "expanded_task_ids": [],
+      "global_compactions_after_task_regions": 0,
+      "median_compression_ratio": 36.271157894736845,
+      "open_task_count": 0,
+      "raw_region_serialized_bytes": 695001,
+      "raw_task_bodies_reintroduced_after_global_compaction": null,
+      "regions": [
+        {
+          "begin_entry_index": 6,
+          "compression_ratio": 8.809375,
+          "end_entry_index": 15,
+          "entry_span": 10,
+          "global_compactions_after_region": 0,
+          "model_turns": 3,
+          "raw_serialized_bytes": 28190,
+          "summary_serialized_bytes": 3200,
+          "task_id": "c46c30ef",
+          "tool_calls": 6
+        },
+        {
+          "begin_entry_index": 17,
+          "compression_ratio": 49.10185792349727,
+          "end_entry_index": 90,
+          "entry_span": 74,
+          "global_compactions_after_region": 0,
+          "model_turns": 35,
+          "raw_serialized_bytes": 224641,
+          "summary_serialized_bytes": 4575,
+          "task_id": "204ae50c",
+          "tool_calls": 38
+        },
+        {
+          "begin_entry_index": 92,
+          "compression_ratio": 42.09744897959184,
+          "end_entry_index": 128,
+          "entry_span": 37,
+          "global_compactions_after_region": 0,
+          "model_turns": 18,
+          "raw_serialized_bytes": 165022,
+          "summary_serialized_bytes": 3920,
+          "task_id": "829d0a13",
+          "tool_calls": 18
+        },
+        {
+          "begin_entry_index": 130,
+          "compression_ratio": 27.321521625846795,
+          "end_entry_index": 158,
+          "entry_span": 29,
+          "global_compactions_after_region": 0,
+          "model_turns": 14,
+          "raw_serialized_bytes": 104860,
+          "summary_serialized_bytes": 3838,
+          "task_id": "87e88ab2",
+          "tool_calls": 14
+        },
+        {
+          "begin_entry_index": 160,
+          "compression_ratio": 36.271157894736845,
+          "end_entry_index": 205,
+          "entry_span": 46,
+          "global_compactions_after_region": 0,
+          "model_turns": 20,
+          "raw_serialized_bytes": 172288,
+          "summary_serialized_bytes": 4750,
+          "task_id": "5c4a9a0d",
+          "tool_calls": 25
+        }
+      ],
+      "reintroduction_measurement": "unavailable without provider-request projection diagnostics",
+      "rejected_region_count": null,
+      "rejection_reasons": {},
+      "schema_version": 1,
+      "summary_serialized_bytes": 20283,
+      "unmatched_end_count": 0
+    }
+  },
+  "schema_version": 1
+}

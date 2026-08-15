@@ -1,0 +1,10 @@
+{
+  "ended_at": "2026-08-14T23:24:27.467806Z",
+  "error": null,
+  "exit_reason": "scenario_completed",
+  "process_exit_status": 0,
+  "started_at": "2026-08-14T22:55:58.345706Z",
+  "status": "completed",
+  "steps_completed": 3,
+  "wall_seconds": 1709.1221106038429
+}

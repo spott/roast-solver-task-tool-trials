@@ -1,0 +1,178 @@
+{
+  "extractor_errors": [],
+  "namespaces": {
+    "generic": {
+      "binary_change_count": 0,
+      "cache_read_tokens": 3096576,
+      "cache_write_tokens": 0,
+      "changed_file_count": 28,
+      "context_fraction_trajectory": [
+        0.040224264705882355
+      ],
+      "cost_usd": 5.116903,
+      "evaluation_count": 0,
+      "evaluations_failed": 0,
+      "evaluations_passed": 0,
+      "event_count": 55116,
+      "event_parse_errors": 0,
+      "exit_reason": "scenario_completed",
+      "final_tree_sha": "124277b14d6b4eb2ef0ff71d6600ad386d71e2b3",
+      "global_compaction_count": 0,
+      "global_compactions": [],
+      "input_tokens": 299171,
+      "lines_added": 4306,
+      "lines_deleted": 3,
+      "output_tokens": 69092,
+      "patch_size_bytes": 176240,
+      "process_exit_status": 0,
+      "provider_input_tokens_trajectory": [
+        299171
+      ],
+      "session_entry_count": 316,
+      "session_message_count": 312,
+      "session_parse_errors": 0,
+      "session_serialized_bytes": 1058742,
+      "status": "completed",
+      "steps_completed": 3,
+      "tool_call_count": 181,
+      "tool_calls_by_name": {
+        "bash": 61,
+        "begin_task": 6,
+        "edit": 26,
+        "end_task": 6,
+        "read": 59,
+        "write": 23
+      },
+      "tool_failure_count": 17,
+      "turn_count": 1,
+      "turns": [
+        {
+          "cache_read_tokens": 3096576,
+          "cache_write_tokens": 0,
+          "context_fraction": 0.040224264705882355,
+          "context_tokens": 10941,
+          "context_window": 272000,
+          "cost_usd": 5.116903000000001,
+          "elapsed_seconds": 1668.5769959776662,
+          "input_tokens": 299171,
+          "output_tokens": 69092,
+          "scenario_step": 1,
+          "turn_index": 1
+        }
+      ],
+      "usage_record_count": 131,
+      "usage_totals": {
+        "cache_read_tokens": 3096576,
+        "cache_write_tokens": 0,
+        "cost_usd": 5.116903,
+        "input_tokens": 299171,
+        "output_tokens": 69092
+      },
+      "wall_seconds": 1669.4080021581613
+    },
+    "task_compaction": {
+      "abandoned_task_count": 0,
+      "acceptance_diagnostics_available": false,
+      "accepted_region_count": null,
+      "begin_task_count": 6,
+      "closed_task_count": 6,
+      "compression_ratios": [
+        8.411191449229802,
+        36.4006734006734,
+        66.08727462764567,
+        45.54851598173516,
+        50.368447204968945,
+        46.34047237790232
+      ],
+      "end_task_count": 6,
+      "expand_task_count": 0,
+      "expanded_task_ids": [],
+      "global_compactions_after_task_regions": 0,
+      "median_compression_ratio": 45.94449417981874,
+      "open_task_count": 0,
+      "raw_region_serialized_bytes": 1035689,
+      "raw_task_bodies_reintroduced_after_global_compaction": null,
+      "regions": [
+        {
+          "begin_entry_index": 6,
+          "compression_ratio": 8.411191449229802,
+          "end_entry_index": 15,
+          "entry_span": 10,
+          "global_compactions_after_region": 0,
+          "model_turns": 3,
+          "raw_serialized_bytes": 26756,
+          "summary_serialized_bytes": 3181,
+          "task_id": "9f3d74eb",
+          "tool_calls": 6
+        },
+        {
+          "begin_entry_index": 17,
+          "compression_ratio": 36.4006734006734,
+          "end_entry_index": 67,
+          "entry_span": 51,
+          "global_compactions_after_region": 0,
+          "model_turns": 24,
+          "raw_serialized_bytes": 162165,
+          "summary_serialized_bytes": 4455,
+          "task_id": "e6459f95",
+          "tool_calls": 26
+        },
+        {
+          "begin_entry_index": 69,
+          "compression_ratio": 66.08727462764567,
+          "end_entry_index": 141,
+          "entry_span": 73,
+          "global_compactions_after_region": 0,
+          "model_turns": 33,
+          "raw_serialized_bytes": 252916,
+          "summary_serialized_bytes": 3827,
+          "task_id": "b0009b2d",
+          "tool_calls": 40
+        },
+        {
+          "begin_entry_index": 143,
+          "compression_ratio": 45.54851598173516,
+          "end_entry_index": 202,
+          "entry_span": 60,
+          "global_compactions_after_region": 0,
+          "model_turns": 27,
+          "raw_serialized_bytes": 159602,
+          "summary_serialized_bytes": 3504,
+          "task_id": "62a18b75",
+          "tool_calls": 32
+        },
+        {
+          "begin_entry_index": 204,
+          "compression_ratio": 50.368447204968945,
+          "end_entry_index": 260,
+          "entry_span": 57,
+          "global_compactions_after_region": 0,
+          "model_turns": 20,
+          "raw_serialized_bytes": 202733,
+          "summary_serialized_bytes": 4025,
+          "task_id": "64daae60",
+          "tool_calls": 36
+        },
+        {
+          "begin_entry_index": 262,
+          "compression_ratio": 46.34047237790232,
+          "end_entry_index": 314,
+          "entry_span": 53,
+          "global_compactions_after_region": 0,
+          "model_turns": 17,
+          "raw_serialized_bytes": 231517,
+          "summary_serialized_bytes": 4996,
+          "task_id": "c171bd22",
+          "tool_calls": 35
+        }
+      ],
+      "reintroduction_measurement": "unavailable without provider-request projection diagnostics",
+      "rejected_region_count": null,
+      "rejection_reasons": {},
+      "schema_version": 1,
+      "summary_serialized_bytes": 23988,
+      "unmatched_end_count": 0
+    }
+  },
+  "schema_version": 1
+}
