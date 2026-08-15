@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#15120f">
+  <title>Roast Solver · 3D heat prediction</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="mark">RS</span><span>Roast Solver<small>3D physics preview</small></span></a>
+    <span class="model-badge">M6 · CPU/WASM</span>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Pull with a model, not a guess</p>
+      <h1>See the heat move<br>before the roast does.</h1>
+      <p>Embedded-boundary heat transfer, wet-surface evaporation, radiation, and carryover—computed locally in your browser.</p>
+    </section>
+
+    <div class="workspace">
+      <aside class="panel controls">
+        <div class="panel-heading"><span>01</span><div><h2>Cook setup</h2><p>SI model inputs</p></div></div>
+        <form id="setup-form">
+          <label>Shape preset<select id="preset"><option value="roast">Boneless roast</option><option value="bird">Whole bird + cavity</option><option value="slab">Slab / brisket</option><option value="ham">Ham</option></select></label>
+          <div class="row">
+            <label>Weight <span>kg</span><input id="mass" type="number" min="0.2" max="12" step="0.1" value="1.5" required></label>
+            <label>Starts at <span>°C</span><input id="initial" type="number" min="-2" max="40" step="1" value="5" required></label>
+          </div>
+          <div class="row">
+            <label>Oven <span>°C</span><input id="oven" type="number" min="60" max="300" step="5" value="180" required></label>
+            <label>Pull target <span>°C</span><input id="target" type="number" min="20" max="95" step="1" value="57" required></label>
+          </div>
+          <div class="switch-row"><span><strong>Convection fan</strong><small>20 vs 10 W/m²K</small></span><label class="switch"><input id="convection" type="checkbox"><span></span></label></div>
+          <div class="switch-row"><span><strong>Covered vessel</strong><small>Suppresses evaporation</small></span><label class="switch"><input id="covered" type="checkbox"><span></span></label></div>
+          <details>
+            <summary>Run controls</summary>
+            <div class="row compact">
+              <label>Cook limit <span>min</span><input id="max-cook" type="number" min="30" max="720" value="300"></label>
+              <label>Rest <span>min</span><input id="rest" type="number" min="0" max="120" value="30"></label>
+            </div>
+            <label class="check"><input id="comparison" type="checkbox"> Keep current curve as what-if overlay</label>
+          </details>
+          <button id="run" type="submit"><span>Run prediction</span><b>→</b></button>
+        </form>
+        <p class="local-note">Runs entirely on this device. No food data leaves the browser.</p>
+      </aside>
+
+      <section class="results">
+        <div class="statusline"><span id="status-dot"></span><strong id="status">Ready to simulate</strong><span id="progress-label">31³ preview grid</span></div>
+        <article class="panel chart-panel">
+          <div class="panel-heading"><span>02</span><div><h2>Temperature trajectory</h2><p>Instantaneous coldest point &amp; stable deep probe</p></div></div>
+          <div class="chart-wrap"><canvas id="curve" aria-label="Temperature curves"></canvas><div id="chart-empty">Run a prediction to draw the thermal history.</div></div>
+          <div class="legend"><i class="cold"></i>Coldest <i class="probe"></i>Deep probe <i class="hot"></i>Hottest <i class="compare"></i>Previous run</div>
+        </article>
+
+        <div class="outputs">
+          <article class="metric"><p>Recommended pull</p><strong id="pull-time">—</strong><small>model time</small></article>
+          <article class="metric accent"><p>Peak core</p><strong id="peak">—</strong><small id="peak-time">during rest</small></article>
+          <article class="metric"><p>Carryover</p><strong id="carryover">—</strong><small>deep probe rise</small></article>
+          <article class="metric"><p>Surface loss</p><strong id="mass-loss">—</strong><small>evaporated model water</small></article>
+        </div>
+
+        <article class="panel field-panel">
+          <div class="panel-heading"><span>03</span><div><h2>Doneness slice</h2><p>Scrub through the z-axis</p></div></div>
+          <div class="field-layout">
+            <div class="slice-wrap"><canvas id="slice" aria-label="Temperature slice"></canvas><div class="slice-axis">crown ↑</div></div>
+            <div class="slice-controls">
+              <label>Slice <output id="slice-label">center</output><input id="slice-index" type="range" min="0" max="30" value="15"></label>
+              <div class="temp-key"><span><i class="raw"></i>Below target</span><span><i class="done"></i>At target</span><span><i class="over"></i>Target + 15°C</span></div>
+              <p id="slice-caption">The cut surface appears as the field streams from the solver.</p>
+            </div>
+          </div>
+        </article>
+
+        <details class="panel safety-panel">
+          <summary><span>Advanced safety integral</span><b id="pasteurization">—</b></summary>
+          <p>Equivalent minutes at 70°C using z = 10°C, integrated at the instantaneous coldest voxel. This conservative model output is not a food-safety guarantee; use current guidance for species, pathogen, handling, and vulnerable diners.</p>
+        </details>
+      </section>
+    </div>
+
+    <section class="disclaimer">
+      <strong>Uncalibrated synthetic-fixture build.</strong>
+      <p>No real probe logs were supplied. Parameters are literature-scale physics defaults and analytic/synthetic regression fixtures—not empirical calibration. Geometry, ovens, bones, fat, and handling vary. Verify with a calibrated thermometer.</p>
+    </section>
+  </main>
+  <footer><span>Roast Solver v0.1 · static + local</span><a href="https://github.com/" rel="noreferrer">Physics and limitations are documented with the source.</a></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

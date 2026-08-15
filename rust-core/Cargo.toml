@@ -1,0 +1,15 @@
+[package]
+name = "roast-core"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Rust/WASM progressive core for Roast Solver"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+panic = "abort"
